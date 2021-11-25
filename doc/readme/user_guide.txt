@@ -1,0 +1,56 @@
+Definitions of the driver configuration mode:
+
+  d0 -- [DTS][INT] (default)
+  d1 -- [DTS][POLL] (coerce)
+  
+  d2 -- [NDTS][INT] (coerce)
+  d3 -- [NDTS][POLL] (coerce)
+  
+  DTS mode: 
+	d0 interrupt, d1 polling 
+  Non DTS mode: 
+	d2 interrupt, d3 polling 
+	
+  In dm9051_release.c, default as d0  (default)
+  
+  In dm9051_d1.c, dm9051_d2.c, dm9051_d3.c, dm9051_olderkernel.c,
+    The macro define, DM_TCONF_VER, is defined as 1,2,3 for d1,d2,d3.  (coerces)
+
+  Files for the project:
+    ./dm_build_hardcore/d1_conf_ver.h
+    ./dm_build_hardcore/d2_conf_ver.h
+    ./dm_build_hardcore/d3_conf_ver.h
+    ./dm_build_hardcore/dm_build_hardcore.h (macro definitions)
+    ./dm_build_hardcore/ev_disable/dm_dts_develm13_collect.c
+    ./dm_build_hardcore/ev_disable/dm_ndts_m7_collect.c
+    ./dm_build_hardcore/opt/fn_ndts_redesigni_collect.c
+    ./dm_build_hardcore/opt/func_redesignp_subroutine.h
+    ./dm_build_hardcore/opt/func_redesignp_subroutine.c
+    ./dm_build_hardcore/opt/fn_ndts_redesignp_collect.c
+    ./dm_build_hardcore/opt/fn_dts_redesignp_collect.c
+    ./dm_build_hardcore/dm_build_hardcore.c (include list structure)
+    ./dm_coerces/dm9051_d1.c (in case to instead of original ./dm9051.c)
+    ./dm_coerces/dm9051_d2.c (in case to instead of original ./dm9051.c)
+    ./dm_coerces/dm9051_d3.c (in case to instead of original ./dm9051.c)
+    ./dm_coerces/dm9051_olderkernel.c (in case to instead of original ./dm9051.c)
+  
+  Tips: Refer to readme.txt, check to find "making coerce" section.
+   
+   
+Definitions of the driver for older kernel mode:
+
+  Files for the project:
+    ./dm_build_hardcore/dm_build_olderkernel.h
+    ./dm_coerces/dm9051_olderkernel.c (to instead of original ./dm9051.c)
+
+  Tips: Refer to readme.txt, check to find "older kernel" section.
+   
+   
+Definitions of the driver for debug functions:
+
+  Files for the project:
+    ./dm_build_hardcore/board_info_debug_support.h (to instead of original ./board_info.h)
+    ./dm_build_hardcore/debug_support/debug_code_rst_and_carri_collect.h
+    ./dm_build_hardcore/debug_support/debug_code_rst_and_carri_collect.c
+    
+  Tips: Refer to readme.txt, check to find "debug-support" section.

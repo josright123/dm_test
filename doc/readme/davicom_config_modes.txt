@@ -1,0 +1,27 @@
+
+ CONF_VER
+ 
+   [d0]  DM_VER_REL                           [d2]   DM_VER_D2
+         
+         (Interrupt mode)                            (Interrupt mode)
+         (Use DTS Tree)
+   
+   [d1]  DM_VER_D1                            [d3]   DM_VER_D3
+         
+         (Polling mode)                              (Polling mode)
+         (Use DTS Tree)
+ 
+   ---------------------------------------------------------------------
+    for [d0][d1][d2][d3]
+    In "dm_board_newinfo/macro/conf_ver.h" define all the configuration 
+    selections. Such as d0, d1, d2, d3. Conjaction with debug and/or 
+    oldkernel addition selections.
+    
+    Note: Every mode selected in above, It can be also add individually 
+    for DM_VER_DEBUG, and/or DM_VER_OLDKERNEL
+   ---------------------------------------------------------------------
+    for [d2][d3]
+    Parameters for max_speed_hz, bus_number, chip_select, irqnum, trigger
+    are for d2 and d3 which are non dts modes.
+   ---------------------------------------------------------------------
+   

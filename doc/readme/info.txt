@@ -1,0 +1,8 @@
+
+//#include "dm_update_hardcore/macro/board_info_update_debug_version.h"			//[Use coerces],d1,d2,d3(,_d0)
+											//[tested OK] _d0 + _debug_code_rst_and_carri_collect
+//#include "board_info.h"								//[Use default OK] _d0
+//#include "dm_update_hardcore/macro/board_info_update_d1.h"				//[Use coerces OK] d1
+//#include "dm_update_hardcore/macro/board_info_update_d2.h"				//[Use coerces OK] d2
+//#include "dm_update_hardcore/macro/board_info_update_d3.h"				//[Use coerces OK] d3
+//#include "dm_update_hardcore/macro/board_info_update_olderkernel.h"			//[Use oldkernel NotRun, compiler OK] with d2

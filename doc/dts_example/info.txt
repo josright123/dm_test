@@ -1,0 +1,41 @@
+DTS rule:
+These are examples verifiy in raspberry pi4,
+
+The platform description is top with
+
+ compatible = "brcm,bcm2835"; 
+ 
+The device description is overlay with
+
+ compatible = "davicom,dm9051";
+
+
+Boot: (with /boot/config.txt)
+
+dtparam=spi=on
+dtoverlay=dm9v22xc1_mhz78
+#dtoverlay=anyspi:spi0-1,dev="davicom,dm9051",speed=31200000
+#dtoverlay=dm9v22xc1_interrupt
+
+(Use dm9v22xc1_mhz78.dtbo,
+(O) or anyspi.dtbo, (anyspi:spi0-1,dev="davicom,dm9051",speed=31200000,//with parameters)
+(X) or anyspi.dtbo + dm9v22xc1_interrupt.dtbo )
+
+Because dm9v22xc1_mhz78.dtbo,support POLL/INT
+Because anyspi.dtbo, support POLL only
+Because dm9v22xc1_interrupt.dtbo, support define INT-pin
+
+anyspi_dm9v22.dts
+(O) anyspi_dm9v22.dtbo (dtoverlay=anyspi_dm9v22:spi0-1,dev="davicom,dm9051",speed=31200000,int_pin=26)
+
+dtc utility:
+# To convert dts file into dtb 
+<kernel-source>/scripts/dtc/dtc -I dts -O dtb <dts_file> -o <dtb_file>
+/lib/modules/5.10.11-v7l+/build/scripts/dtc/dtc -I dts -O dtb xxx.dts -o dtb_file
+
+# To convert dtb to dts
+<kernel-source>/scripts/dtc/dtc -I dtb -O dts <dtb_file> -o <dts_file>
+/lib/modules/5.10.11-v7l+/build/scripts/dtc/dtc -I dtb -O dts <dtb_file> -o <dts_file>
+
+# Ubuntu device-tree-compiler package 
+fdtdump dtb_file > dts_dump

@@ -1,0 +1,33 @@
+// USE: "dm_update_hardcore/board_info_update_debug_version.h"
+// USE: "dm_update_hardcore/board_info_debug.c"
+// USE: "dm_update_hardcore/board_info_update.c"
+
+//(1) CHANGE INCLUDE "board_info.h", TO "board_info_update_debug_version.h"
+//#include "board_info.h"								//[Use default]
+//#include "dm_coerces/board_info_update_debug_version.h"				//[Use coerces],d1,d2,d3(,d0)
+#include "dm_update_hardcore/board_info_update_debug_version.h"				//[Use coerces](,d0)
+
+//(2) INCLUDE "board_info_debug.c"
+#include "dm_update_hardcore/board_info_debug.c"					//[Use coerces]
+
+static irqreturn_t dm9051_rx_threaded_irq(int irq, void *pw)
+{
+  ...
+  
+//(3) INCLUDE "board_info_update.c"
+#include "dm_update_hardcore/board_info_update.c"					//[Use coerces]
+	
+static void dm9051_init_dm9051(struct net_device *dev) {
+  ...
+
+//"board_info_update_debug_version.h", Analysis:
+
+ 1. 
+#define DM_TCONF_VER		0
+	
+ 2,
+#include "../dm_build_hardcore/debug_support/debug_code_rst_and_carri_collect.h" 
+
+[Summary]
+ 1. define is to select _d0
+ 2. include is to select debug support
